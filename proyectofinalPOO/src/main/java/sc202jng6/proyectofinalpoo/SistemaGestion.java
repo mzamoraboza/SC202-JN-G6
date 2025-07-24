@@ -75,6 +75,10 @@ public class SistemaGestion {
                 agregarMatricula(nuevaMatricula);
             }
             case 4 -> verUsuarios(); // falta implementar el método verUsuarios
+
+                static Usuario[] listaUsuarios = new Usuario[100];
+                static int totalUsuarios = 0;
+                
             case 5 -> verCursos(); // falta implementar el método verCursos
             case 6 -> verMatriculas();// falta implementar el método verMatriculas
             case 7 -> JOptionPane.showMessageDialog(null, "Saliendo del sistema.");
