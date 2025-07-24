@@ -178,7 +178,20 @@ public class SistemaGestion {
             default -> JOptionPane.showMessageDialog(null, "Opción no válida. Intente de nuevo.");
         }
     }
+    
+// Devuelve la cantidad de usuarios registrados
+public int getUsuarioCount() {
+    return usuarioCount;
+}
 
+// Devuelve la cantidad de cursos registrados
+public int getCursoCount() {
+    return cursoCount;
+}
 
+// Devuelve la cantidad de matrículas registradas
+public int getMatriculaCount() {
+    return matriculaCount;
+}
 
 } //public class SistemaGestion
