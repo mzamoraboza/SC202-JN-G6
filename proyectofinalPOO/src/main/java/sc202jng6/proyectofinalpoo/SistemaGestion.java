@@ -100,6 +100,36 @@ public class SistemaGestion {
         JOptionPane.showMessageDialog(null, lista.toString(), "Lista de Matrículas", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    // Método para agregar una inscripción al sistema
+    public void agregarInscripcion(Inscripcion inscripcion) {
+        inscripciones[inscripcionCount++] = new Inscripcion(1, 1, 1);
+        inscripciones[inscripcionCount++] = new Inscripcion(2, 2, 2);
+        inscripciones[inscripcionCount++] = new Inscripcion(3, 3, 3);
+    }
+    // Método para listar las inscripciones registradas
+    public void listarInscripciones() {
+        StringBuilder lista = new StringBuilder("Inscripciones registradas:\n");
+        for (int i = 0; i < inscripcionCount; i++) {
+            Inscripcion inscripcion = inscripciones[i];
+            lista.append("ID Inscripción: ").append(inscripcion.getId())
+                    .append(", Estudiante ID: ").append(inscripcion.getIdEstudiante())
+                    .append(", Curso ID: ").append(inscripcion.getIdCurso())
+                    .append("\n");
+        }
+        JOptionPane.showMessageDialog(null, lista.toString(), "Lista de Inscripciones", JOptionPane.INFORMATION_MESSAGE);
+    }
+    // Método para iniciar el sistema de gestión
+    public void iniciar() {
+        JOptionPane.showMessageDialog(null, "Bienvenido al Sistema de Gestión de Cursos", "Sistema de Gestión",
+                JOptionPane.INFORMATION_MESSAGE);
+        int opcion = Integer.parseInt(
+                JOptionPane.showInputDialog("Seleccione una opción:\n1. Administrador\n2. Estudiante\n3. Salir"));
+        switch (opcion) {
+            case 1 -> {
+                // Implementación del menú para el administrador
+            }
+        }
+
     // Sistema de gestión en mantenimiento 25/07/2025
     /*
      * private Usuario[] usuarios = new Usuario[100];
