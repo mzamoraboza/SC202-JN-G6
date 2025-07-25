@@ -26,7 +26,7 @@ public class Usuario {
     }
 
     // GET
-    public int getInt(){
+    public int getId() {
         return id;
     }
     
