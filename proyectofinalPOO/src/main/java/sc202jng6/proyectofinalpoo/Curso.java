@@ -51,4 +51,11 @@ public class Curso {
     public void sethorario(String horario){
         this.horario = horario;
     }
+
+    public void mostrarCurso() {
+        JOptionPane.showMessageDialog(null, 
+        "Curso: " + nombreCurso + 
+        "\nDescripción: " + descripcion + 
+        "\nHorario: " + horario);
+    }
 }
