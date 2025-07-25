@@ -15,6 +15,16 @@ public class ProyectofinalPOO {
         SistemaGestion sistema = new SistemaGestion();
         sistema.iniciar();
 
+                // Crear curso de prueba
+        Curso curso1 = new Curso("Programación Java", "Curso introductorio", "Lunes 4pm");
+        curso1.setIdCurso(1);
+        sistema.agregarCurso(curso1);
+
+        // Crear estudiante
+        Estudiante estudiante = new Estudiante("Augusto", "augusto@email.com", "clave123", 101, sistema);
+
+        // Mostrar el catálogo de cursos
+        estudiante.verCatalogoCursos();
 
         
     }
