@@ -74,13 +74,82 @@ public class SistemaGestion {
                         idCursoMatricula);
                 agregarMatricula(nuevaMatricula);
             }
-            case 4 -> verUsuarios(); // falta implementar el método verUsuarios
+            case 4 -> verUsuarios();
 
-                static Usuario[] listaUsuarios = new Usuario[100];
-                static int totalUsuarios = 0;
+                public void verUsuarios() {
+                    if (usuarioCount == 0) {
+                        JOptionPane.showMessageDialog(null, "No hay usuarios registrados.", "Usuarios", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    }
+                    
+                    StringBuilder lista = new StringBuilder("Usuarios registrados:\n");
+                    for (int i = 0; i < usuarioCount; i++) {
+                        Usuario u = usuarios[i];
+                        lista.append("ID: ").append(u.getInt())
+                            .append(", Nombre: ").append(u.getNombre())
+                            .append(", Correo: ").append(u.getCorreo())
+                            .append(", Rol: ").append(u.getRol())
+                            .append("\n");
+                    }
+                    
+                    JOptionPane.showMessageDialog(null, lista.toString(), "Lista de usuarios", JOptionPane.INFORMATION_MESSAGE);
+                }
                 
-            case 5 -> verCursos(); // falta implementar el método verCursos
-            case 6 -> verMatriculas();// falta implementar el método verMatriculas
+            case 5 -> verCursos();
+                public void verCursos() {
+                    if (cursoCount == 0) {
+                        JOptionPane.showMessageDialog(null, "No hay cursos registrados", "Cursos", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    }
+
+                    String lista = new String("Cursos registrados:\n");
+                    for (int i = 0; i < cursoCount; i++) {
+                        Curso c = cursos[i];
+                        lista.append("ID: ").append(c.getIdCurso())
+                            .append(", Nombre: ").append(c.getnombreCurso())
+                            .append(", Descripción: ").append(c.getdescripcion())
+                            .append(", Horario: ").append(c.gethorario())
+                            .append("\n");
+                    }
+                    JOptionPane.showMessageDialog(null, lista.toString(), "Lista de cursos", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+            case 6 -> verMatriculas();
+                public void verMatriculas() {
+                    if (matriculaCount == 0) {
+                        JOptionPane.showMessageDialog(null, "No hay matrículas registradas.", "Matrículas", JOptionPane.INFORMATION_MESSAGE);
+                        return;
+                    }
+
+                    String lista = new String("Matrículas registradas:\n");
+                    for (int i = 0; i < matriculaCount; i++) {
+                        Matricula m = matriculas[i];
+                        
+                        String nombreEstudiante = "Desconocido";
+                        for (int j = 0; j < usuarioCount; j++) {
+                            if (usuarios[j].getInt() == m.getIdEstudiante()) {
+                                nombreEstudiante = usuarios[j].getNombre();
+                                break;
+                            }
+                        }
+                        
+                        String nombreCurso = "Desconocido";
+                        for (int k = 0; k < cursoCount; k++) {
+                            if (cursos[k].getIdCurso() == m.getIdCurso()) {
+                                nombreCurso = cursos[k].getnombreCurso();
+                                break;
+                            }
+                        }
+                        
+                        lista.append("ID Matrícula: ").append(m.getId())
+                            .append(", Estudiante: ").append(nombreEstudiante)
+                            .append(", Curso: ").append(nombreCurso)
+                            .append("\n");
+                    }
+                    
+                    JOptionPane.showMessageDialog(null, lista.toString(), "Lista de Matrículas", JOptionPane.INFORMATION_MESSAGE);
+                }
+            
             case 7 -> JOptionPane.showMessageDialog(null, "Saliendo del sistema.");
             default -> JOptionPane.showMessageDialog(null, "Opción no válida. Intente de nuevo.");
         }
