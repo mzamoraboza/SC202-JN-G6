@@ -479,4 +479,12 @@ public class SistemaGestion {
                  */
 
         }
+// Getters para funcion en clase Estudiente 
+public Matricula[] getMatriculas() {
+    return matriculas;
+}
+
+public Curso[] getCursos() {
+    return cursos;
+}
 }// public class SistemaGestion
