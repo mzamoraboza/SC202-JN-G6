@@ -4,6 +4,8 @@
 
 package sc202jng6.proyectofinalpoo;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mzamo
@@ -11,21 +13,44 @@ package sc202jng6.proyectofinalpoo;
 public class ProyectofinalPOO {
 
     public static void main(String[] args) {
-        //JOptionPane.showMessageDialog(null, "Bienvenido al Sistema de Gestión de Cursos", "Sistema de Gestión", JOptionPane.INFORMATION_MESSAGE);
-        SistemaGestion sistema = new SistemaGestion();
-        sistema.iniciar();
+        GestionAdministrador gestionAdministrador = new GestionAdministrador();
+        GestionCurso gestionCurso = new GestionCurso();
+        GestionMatricula gestionMatricula = new GestionMatricula();
+        GestionEstudiante gestionEstudiante = new GestionEstudiante();
+        // Llamada al método para mostrar el menú principal
+        JOptionPane.showMessageDialog(null, "Bienvenido al Sistema de Gestión de Cursos",
+                "Sistema de Gestión de Cursos", JOptionPane.INFORMATION_MESSAGE);
+        mostrarMenuPrincipal();
 
-                // Crear curso de prueba
-        Curso curso1 = new Curso("Programación Java", "Curso introductorio", "Lunes 4pm");
-        curso1.setIdCurso(1);
-        sistema.agregarCurso(curso1);
+        // Aquí puedes agregar más lógica para manejar la interacción con el usuario
+        // y las diferentes funcionalidades del sistema.
+    }
 
-        // Crear estudiante
-        Estudiante estudiante = new Estudiante("Augusto", "augusto@email.com", "clave123", 101, sistema);
+    static void mostrarMenuPrincipal() {
+        while (true) {
+            switch (JOptionPane.showInputDialog(null, "Seleccione una opción:\n"
+                    + "1. Administrador\n"
+                    + "2. Estudiante\n"
+                    + "3. Salir", "Menú Principal", JOptionPane.INFORMATION_MESSAGE)) {
+                case "1":
+                    // Lógica para el administrador
+                    mostrarMenuAdministrador();
+                    break;
+                case "2":
+                    // Lógica para el estudiante
+                    mostrarMenuEstudiante();
+                    break;
+                case "3":
+                    // Salir del programa
+                    JOptionPane.showMessageDialog(null, "Gracias por usar el sistema. ¡Hasta luego!",
+                            "Salir", JOptionPane.INFORMATION_MESSAGE);
 
-        // Mostrar el catálogo de cursos
-        estudiante.verCatalogoCursos();
-
-        
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción no válida. Por favor, intente de nuevo.",
+                            "Error", JOptionPane.ERROR_MESSAGE);
+                    break;
+            }
+        }
     }
 }

@@ -12,7 +12,6 @@ public enum RolUsuario {
     // Definición de los roles de usuario
     Administrador, // Rol para el administrador del sistema
     Estudiante,// Rol para los estudiantes que se inscriben en los cursos
-    Profesor // Rol para los profesores que imparten los cursos
-
+    
 
 }

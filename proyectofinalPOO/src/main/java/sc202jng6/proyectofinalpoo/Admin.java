@@ -1,64 +1,92 @@
 package sc202jng6.proyectofinalpoo;
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mzamo
  */
-import javax.swing.JOptionPane;
 
 public class Admin {
+    // Atributos del administrador
+    private int id;
+    private String nombre;
+    private String correo;  
+    private String contrasena;
+    private String tipoUsuario = "Administrador";
+    // Constructor
+    public Admin(int id, String nombre, String apellido, String correo, String admin123) {
+        this.id = id;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.contrasena = contrasena;
+    }
+    //getters
+    public int getId() {
+        return id;
+    }   
+    public String getNombre() {
+        return nombre;
+    }
+    
+    public String getCorreo() {
+        return correo;
+    }
+    public String getContrasena() {
+        return "*".repeat(contrasena.length());
+    }
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }   
+    //setters
+    public void setId(int id) {
+        this.id = id;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+    public void setContrasena(String contrasena) {
+       boolean isValid = true;
 
-    // Atributos de la clase Administrador
-    private final Usuario usuario;
-    private final SistemaGestion sistema;
+        if (contrasena.length() < 8) {
+            JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos 8 caracteres.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            isValid = false;
+        }
 
-    public Admin(int id, String nombre, String correo, String password, SistemaGestion sistema) {
-        this.usuario = new Usuario(id, nombre, correo, password, RolUsuario.Administrador);
-        this.sistema = sistema;
+        for (int i = 1; i < contrasena.length(); i++) {
+            if (contrasena.charAt(i) == ' ' || contrasena.charAt(i) == (i - 1)) {
+                JOptionPane.showMessageDialog(null, "La contraseña no puede contener espacios.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                isValid = false;
+                break;
+
+            }
+
+            if (isValid) {
+                this.contrasena = contrasena;
+                JOptionPane.showMessageDialog(null, "Contraseña actualizada correctamente.", "Éxito",
+                        JOptionPane.INFORMATION_MESSAGE);
+                        
+            }
+        }
+    }
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+   
+    public void mostrarInformacionAdmin() {
+        JOptionPane.showMessageDialog(null,
+                "ID: " + id + "\nNombre: " + nombre + "\nCorreo: " + correo + "\nTipo de Usuario: " + tipoUsuario,
+                "Información del Administrador", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    // Método para gestionar usuarios
-    public void gestionarUsuarios() {
-        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del nuevo usuario:");
-        String correo = JOptionPane.showInputDialog("Ingrese el correo del nuevo usuario:");
-        String password = JOptionPane.showInputDialog("Ingrese la contraseña del nuevo usuario:");
-        int id = sistema.getUsuarioCount() + 1;
+    
+   
 
-        Usuario nuevoUsuario = new Usuario(id, nombre, correo, password, RolUsuario.Estudiante);
-        sistema.agregarUsuario(nuevoUsuario);
-
-        JOptionPane.showMessageDialog(null, "Usuario agregado:\nNombre: " + nombre + "\nCorreo: " + correo);
-    }
-
-    // Método para gestionar cursos
-    public void gestionarCursos() {
-        String nombreCurso = JOptionPane.showInputDialog("Ingrese el nombre del curso:");
-        String descripcion = JOptionPane.showInputDialog("Ingrese la descripción del curso:");
-        String horario = JOptionPane.showInputDialog("Ingrese el horario del curso:");
-        int id = sistema.getCursoCount() + 1;
-
-        Curso nuevoCurso = new Curso(nombreCurso, descripcion, horario);
-        nuevoCurso.setIdCurso(id);
-        sistema.agregarCurso(nuevoCurso);
-
-        JOptionPane.showMessageDialog(null, "Curso agregado:\n" + nombreCurso);
-    }
-
-    // Método para gestionar matrículas
-    public void gestionarMatriculas() {
-        String idEstudianteStr = JOptionPane.showInputDialog("Ingrese el ID del estudiante:");
-        String idCursoStr = JOptionPane.showInputDialog("Ingrese el ID del curso:");
-        int idEstudiante = Integer.parseInt(idEstudianteStr);
-        int idCurso = Integer.parseInt(idCursoStr);
-        int idMatricula = sistema.getMatriculaCount() + 1;
-
-        Matricula nuevaMatricula = new Matricula(idMatricula, idEstudiante, idCurso);
-        sistema.agregarMatricula(nuevaMatricula);
-
-        JOptionPane.showMessageDialog(null, "Matrícula registrada con éxito.");
-    }
-
-    // Getter para usuario
-    public Usuario getUsuario() {
-        return usuario;
-    }
+    
 }

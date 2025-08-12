@@ -4,58 +4,39 @@
  */
 package sc202jng6.proyectofinalpoo;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mzamo
  */
 public class Curso {
-    private String nombreCurso;
-    private String descripcion;
-    private String horario;
-    private int idCurso;
-    
-    public Curso(String nombreCurso, String descripcion, String horario){
+    public String nombreCurso;
+    public String codigoCurso;
+    public String descripcionCurso;
+    public String horarioCurso;
+
+    public Curso(String nombreCurso, String codigoCurso, String descripcionCurso, String horarioCurso) {
         this.nombreCurso = nombreCurso;
-        this.descripcion = descripcion;
-        this.horario = horario;
+        this.codigoCurso = codigoCurso;
+        this.descripcionCurso = descripcionCurso;
+        this.horarioCurso = horarioCurso;
     }
+    public String getNombreCurso() { return nombreCurso; }
+    public String getCodigoCurso() { return codigoCurso; }
+    public String getDescripcionCurso() { return descripcionCurso; }
+    public String getHorarioCurso() { return horarioCurso; }
+    public void setNombreCurso(String nombreCurso) { this.nombreCurso = nombreCurso; }
+    public void setCodigoCurso(String codigoCurso) { this.codigoCurso = codigoCurso; }  
+    public void setDescripcionCurso(String descripcionCurso) { this.descripcionCurso = descripcionCurso; }
+    public void setHorarioCurso(String horarioCurso) { this.horarioCurso = horarioCurso; }
 
-    public int getIdCurso() {
-        return idCurso;
-    }
-
-    public void setIdCurso(int idCurso) {
-        this.idCurso = idCurso;
-    }
-    
-    public String getnombreCurso(){
-        return nombreCurso;
-    }
-    
-    public String getdescripcion(){
-        return descripcion;
-    }
-    
-    public String gethorario(){
-        return horario;
-    }
-    
-    public void setnombreCurso(String nombreCurso){
-        this.nombreCurso = nombreCurso;
-    }
-    
-    public void setdescripcion(String descripcion){
-        this.descripcion = descripcion;
-    }
-    
-    public void sethorario(String horario){
-        this.horario = horario;
-    }
-
-    public void mostrarCurso() {
-        JOptionPane.showMessageDialog(null, 
-        "Curso: " + nombreCurso + 
-        "\nDescripción: " + descripcion + 
-        "\nHorario: " + horario);
+    public void mostrarInformacionCurso(){
+        JOptionPane.showMessageDialog(null,
+                "Nombre del Curso: " + nombreCurso + "\nCódigo del Curso: " + codigoCurso + "\nDescripción: " + descripcionCurso + "\nHorario: " + horarioCurso,
+                "Información del Curso", JOptionPane.INFORMATION_MESSAGE);      
     }
 }
+
+
+      
