@@ -22,35 +22,36 @@ public class ProyectofinalPOO {
                 "Sistema de Gestión de Cursos", JOptionPane.INFORMATION_MESSAGE);
         mostrarMenuPrincipal();
 
-        // Aquí puedes agregar más lógica para manejar la interacción con el usuario
-        // y las diferentes funcionalidades del sistema.
     }
 
-    static void mostrarMenuPrincipal() {
-        while (true) {
-            switch (JOptionPane.showInputDialog(null, "Seleccione una opción:\n"
-                    + "1. Administrador\n"
-                    + "2. Estudiante\n"
-                    + "3. Salir", "Menú Principal", JOptionPane.INFORMATION_MESSAGE)) {
-                case "1":
-                    // Lógica para el administrador
-                    mostrarMenuAdministrador();
-                    break;
-                case "2":
-                    // Lógica para el estudiante
-                    mostrarMenuEstudiante();
-                    break;
-                case "3":
-                    // Salir del programa
-                    JOptionPane.showMessageDialog(null, "Gracias por usar el sistema. ¡Hasta luego!",
-                            "Salir", JOptionPane.INFORMATION_MESSAGE);
+    public static void mostrarMenuPrincipal() {
+        String[] opciones = { "Administradores", "Cursos", "Estudiantes", "Matrículas", "Salir" };
+        int opcion = JOptionPane.showOptionDialog(null, "Seleccione una opción:", "Menú Principal",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
 
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Opción no válida. Por favor, intente de nuevo.",
-                            "Error", JOptionPane.ERROR_MESSAGE);
-                    break;
-            }
+        switch (opcion) {
+            case 0:
+                GestionAdministrador gestionAdministrador = new GestionAdministrador();
+                gestionAdministrador.mostarAdministradores();
+                break;
+            case 1:
+                GestionCurso gestionCurso = new GestionCurso();
+                gestionCurso.mostrarCursos();
+                break;
+            case 2:
+                GestionEstudiante gestionEstudiante = new GestionEstudiante();
+                gestionEstudiante.mostrarEstudiantes();
+                break;
+            case 3:
+                GestionMatricula gestionMatricula = new GestionMatricula();
+                gestionMatricula.mostrarMatriculas();
+                break;
+            case 4:
+                JOptionPane.showMessageDialog(null, "Saliendo del sistema. ¡Hasta luego!");
+                System.exit(0);
+            default:
+                JOptionPane.showMessageDialog(null, "Opción no válida. Intente nuevamente.");
         }
     }
+
 }

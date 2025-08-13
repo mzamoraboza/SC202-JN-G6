@@ -10,15 +10,15 @@ public class Estudiante {
     // Atributos del estudiante
     public int id = 0;
     public String nombre = "";
-    private String correo = "";
+
     private String tipoUsuario = "Estudiante";
     private String contrasena = "";
 
     // Constructor
-    public Estudiante(int id, String nombre, String correo, String contrasena) {
+    public Estudiante(int id, String nombre, String contrasena) {
         this.id = id;
         this.nombre = nombre;
-        this.correo = correo;
+
         this.contrasena = contrasena;
     }
 
@@ -28,22 +28,11 @@ public class Estudiante {
     // Métodos para gestionar el estudiante
     public void mostrarInformacionEstudiante() {
         JOptionPane.showMessageDialog(null,
-                "ID: " + id + "\nNombre: " + nombre + "\nCorreo: " + correo,
+                "ID: " + id + "\nNombre: " + nombre + "\nTipo de Usuario: " + tipoUsuario,
                 "Información del Estudiante", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public String getTipoUsuario() {
-        return tipoUsuario;
-    }
-
-    public String getContrasena() {
-        return "*".repeat(contrasena.length());
-    }
-
+    // Getters y Setters
     public int getId() {
         return id;
     }
@@ -52,17 +41,20 @@ public class Estudiante {
         return nombre;
     }
 
-    // Setters
+    public String getContrasena() {
+        return "*".repeat(contrasena.length());
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
     }
 
     public void setContrasena(String contrasena) {
@@ -80,15 +72,13 @@ public class Estudiante {
                         JOptionPane.ERROR_MESSAGE);
                 isValid = false;
                 break;
-
             }
+        }
 
-            if (isValid) {
-                this.contrasena = contrasena;
-                JOptionPane.showMessageDialog(null, "Contraseña actualizada correctamente.", "Éxito",
-                        JOptionPane.INFORMATION_MESSAGE);
-
-            }
+        if (isValid) {
+            this.contrasena = contrasena;
+            JOptionPane.showMessageDialog(null, "Contraseña actualizada correctamente.", "Éxito",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -96,7 +86,4 @@ public class Estudiante {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public String mostrarInformacionCompleta() {
-        return "ID: " + id + "\nNombre: " + nombre + "\nCorreo: " + correo + "\nTipo de Usuario: " + tipoUsuario;
-    }
 }

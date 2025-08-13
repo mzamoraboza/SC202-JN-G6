@@ -11,32 +11,29 @@ import javax.swing.JOptionPane;
  * @author mzamo
  */
 public class Curso {
-    public String nombreCurso;
-    public String codigoCurso;
-    public String descripcionCurso;
-    public String horarioCurso;
+    private String nombreCurso;
+    private int codigoCurso;
+    private String horarioCurso;
 
-    public Curso(String nombreCurso, String codigoCurso, String descripcionCurso, String horarioCurso) {
-        this.nombreCurso = nombreCurso;
+    public Curso(int codigoCurso, String nombreCurso, String horarioCurso){
         this.codigoCurso = codigoCurso;
-        this.descripcionCurso = descripcionCurso;
+        this.nombreCurso = nombreCurso;
         this.horarioCurso = horarioCurso;
     }
+
     public String getNombreCurso() { return nombreCurso; }
-    public String getCodigoCurso() { return codigoCurso; }
-    public String getDescripcionCurso() { return descripcionCurso; }
+    public int getCodigoCurso() { return codigoCurso; }
     public String getHorarioCurso() { return horarioCurso; }
+
     public void setNombreCurso(String nombreCurso) { this.nombreCurso = nombreCurso; }
-    public void setCodigoCurso(String codigoCurso) { this.codigoCurso = codigoCurso; }  
-    public void setDescripcionCurso(String descripcionCurso) { this.descripcionCurso = descripcionCurso; }
+    public void setCodigoCurso(int codigoCurso) { this.codigoCurso = codigoCurso; }
     public void setHorarioCurso(String horarioCurso) { this.horarioCurso = horarioCurso; }
 
     public void mostrarInformacionCurso(){
         JOptionPane.showMessageDialog(null,
-                "Nombre del Curso: " + nombreCurso + "\nCódigo del Curso: " + codigoCurso + "\nDescripción: " + descripcionCurso + "\nHorario: " + horarioCurso,
-                "Información del Curso", JOptionPane.INFORMATION_MESSAGE);      
+            "Nombre del Curso: " + nombreCurso +
+            "\nCódigo del Curso: " + codigoCurso +
+            "\nHorario: " + horarioCurso,
+            "Información del Curso", JOptionPane.INFORMATION_MESSAGE);
     }
 }
-
-
-      

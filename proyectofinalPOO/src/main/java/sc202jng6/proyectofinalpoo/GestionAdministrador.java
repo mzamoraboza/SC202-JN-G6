@@ -19,17 +19,17 @@ public class GestionAdministrador {
     }
 
     public GestionAdministrador() { // Constructor para inicializar algunos administradores
-        administradores[contador++] = new Admin(1, "Admin1", "Manuel", "manuel@grupo6.com", "admin123");
-        administradores[contador++] = new Admin(2, "Admin2", "Barrtholomeo", "barrtholomeo@grupo6.com", "admin123");
+        administradores[contador++] = new Admin(1, "Manuel","admin123");
+        administradores[contador++] = new Admin(2, "Barrtholomeo", "admin123");
 
     }
 
     public void mostarAdministradores() { // Método para mostrar la información de todos los administradores
         String informacionAdministradores = "Administradores:\n";
-        informacionAdministradores += "ID\tNombre\tCorreo\n";
+        informacionAdministradores += "ID\tNombre\t";
         for (int i = 0; i < contador; i++) {
             informacionAdministradores += administradores[i].getId() + "\t" +
-                    administradores[i].getNombre() + "\t" + administradores[i].getCorreo() + "\n";
+                    administradores[i].getNombre() + "\t" + "\n";
         }
         JOptionPane.showMessageDialog(null, informacionAdministradores, "Lista de Administradores",
                 JOptionPane.INFORMATION_MESSAGE);

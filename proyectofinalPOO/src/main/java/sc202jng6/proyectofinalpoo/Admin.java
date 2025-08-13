@@ -11,14 +11,12 @@ public class Admin {
     // Atributos del administrador
     private int id;
     private String nombre;
-    private String correo;  
     private String contrasena;
     private String tipoUsuario = "Administrador";
     // Constructor
-    public Admin(int id, String nombre, String apellido, String correo, String admin123) {
+    public Admin(int id, String nombre, String contrasena) {
         this.id = id;
         this.nombre = nombre;
-        this.correo = correo;
         this.contrasena = contrasena;
     }
     //getters
@@ -29,9 +27,6 @@ public class Admin {
         return nombre;
     }
     
-    public String getCorreo() {
-        return correo;
-    }
     public String getContrasena() {
         return "*".repeat(contrasena.length());
     }
@@ -46,9 +41,6 @@ public class Admin {
         this.nombre = nombre;
     }
     
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
     public void setContrasena(String contrasena) {
        boolean isValid = true;
 
@@ -81,7 +73,7 @@ public class Admin {
    
     public void mostrarInformacionAdmin() {
         JOptionPane.showMessageDialog(null,
-                "ID: " + id + "\nNombre: " + nombre + "\nCorreo: " + correo + "\nTipo de Usuario: " + tipoUsuario,
+                "ID: " + id + "\nNombre: " + nombre +"\nTipo de Usuario: " + tipoUsuario,
                 "Información del Administrador", JOptionPane.INFORMATION_MESSAGE);
     }
 
