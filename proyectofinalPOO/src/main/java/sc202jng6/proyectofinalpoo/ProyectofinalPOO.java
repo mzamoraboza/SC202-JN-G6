@@ -1,57 +1,52 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package sc202jng6.proyectofinalpoo;
 
 import javax.swing.JOptionPane;
-
 /**
  *
- * @author mzamo
+ * @author Manuel Zamora Boza
  */
 public class ProyectofinalPOO {
 
     public static void main(String[] args) {
-        GestionAdministrador gestionAdministrador = new GestionAdministrador();
-        GestionCurso gestionCurso = new GestionCurso();
-        GestionMatricula gestionMatricula = new GestionMatricula();
-        GestionEstudiante gestionEstudiante = new GestionEstudiante();
-        // Llamada al método para mostrar el menú principal
         JOptionPane.showMessageDialog(null, "Bienvenido al Sistema de Gestión de Cursos",
                 "Sistema de Gestión de Cursos", JOptionPane.INFORMATION_MESSAGE);
-        mostrarMenuPrincipal();
 
-    }
+        // Crear instancias de las gestiones
+        GestionAdministrador gestionAdministrador = new GestionAdministrador();
+        GestionCurso gestionCurso = new GestionCurso();
+        GestionEstudiante gestionEstudiante = new GestionEstudiante();
+        GestionMatricula gestionMatricula = new GestionMatricula(gestionCurso); // pasamos cursos
 
-    public static void mostrarMenuPrincipal() {
-        String[] opciones = { "Administradores", "Cursos", "Estudiantes", "Matrículas", "Salir" };
-        int opcion = JOptionPane.showOptionDialog(null, "Seleccione una opción:", "Menú Principal",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, opciones[0]);
+        while (true) {
+            String menu = "Seleccione una opción:\n"
+                    + "1. Administradores\n"
+                    + "2. Cursos\n"
+                    + "3. Estudiantes\n"
+                    + "4. Matrículas\n"
+                    + "5. Salir";
 
-        switch (opcion) {
-            case 0:
-                GestionAdministrador gestionAdministrador = new GestionAdministrador();
-                gestionAdministrador.mostarAdministradores();
-                break;
-            case 1:
-                GestionCurso gestionCurso = new GestionCurso();
-                gestionCurso.mostrarCursos();
-                break;
-            case 2:
-                GestionEstudiante gestionEstudiante = new GestionEstudiante();
-                gestionEstudiante.mostrarEstudiantes();
-                break;
-            case 3:
-                GestionMatricula gestionMatricula = new GestionMatricula();
-                gestionMatricula.mostrarMatriculas();
-                break;
-            case 4:
-                JOptionPane.showMessageDialog(null, "Saliendo del sistema. ¡Hasta luego!");
-                System.exit(0);
-            default:
-                JOptionPane.showMessageDialog(null, "Opción no válida. Intente nuevamente.");
+            String opcion = JOptionPane.showInputDialog(menu);
+
+            switch (opcion) {
+                case "1":
+                    gestionAdministrador.menuAdministradores();
+                    break;
+                case "2":
+                    gestionCurso.menuCursos();
+                    break;
+                case "3":
+                    gestionEstudiante.menuEstudiantes();
+                    break;
+                case "4":
+                    gestionMatricula.menuGestionarMatriculas();
+                    break;
+                case "5":
+                    JOptionPane.showMessageDialog(null, "Saliendo del sistema...",
+                            "Sistema de Matricula Cursos SC202-JN-G6", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción no válida, intente de nuevo.");
+            }
         }
     }
-
 }
