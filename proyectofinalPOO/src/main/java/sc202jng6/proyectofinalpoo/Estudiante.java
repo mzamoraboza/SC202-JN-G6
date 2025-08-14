@@ -2,14 +2,14 @@ package sc202jng6.proyectofinalpoo;
 
 /**
  *
- * @author mzamo
+ * @author Manuel Zamora Boza
  */
 import javax.swing.JOptionPane;
 
 public class Estudiante {
     // Atributos del estudiante
     public int id = 0;
-    public String nombre = "";
+    public String nombreEstudiante = "";
 
     private String tipoUsuario = "Estudiante";
     private String contrasena = "";
@@ -17,7 +17,7 @@ public class Estudiante {
     // Constructor
     public Estudiante(int id, String nombre, String contrasena) {
         this.id = id;
-        this.nombre = nombre;
+        this.nombreEstudiante = nombre;
 
         this.contrasena = contrasena;
     }
@@ -28,7 +28,7 @@ public class Estudiante {
     // Métodos para gestionar el estudiante
     public void mostrarInformacionEstudiante() {
         JOptionPane.showMessageDialog(null,
-                "ID: " + id + "\nNombre: " + nombre + "\nTipo de Usuario: " + tipoUsuario,
+                "ID: " + id + "\nNombre: " + nombreEstudiante+ "\nTipo de Usuario: " + tipoUsuario,
                 "Información del Estudiante", JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -37,8 +37,8 @@ public class Estudiante {
         return id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreEstudiante() {
+        return nombreEstudiante;
     }
 
     public String getContrasena() {
@@ -53,8 +53,8 @@ public class Estudiante {
         this.id = id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreEstudiante(String nombreEstudiante) {
+        this.nombreEstudiante = nombreEstudiante;
     }
 
     public void setContrasena(String contrasena) {
