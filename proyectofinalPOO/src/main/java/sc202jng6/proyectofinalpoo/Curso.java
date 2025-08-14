@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author mzamo
+ * @author Manuel Zamora Boza
  */
 public class Curso {
     private String nombreCurso;
