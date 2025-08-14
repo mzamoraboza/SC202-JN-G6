@@ -1,38 +1,49 @@
 package sc202jng6.proyectofinalpoo;
 
+/**
+ *
+ * @author Manuel Zamora Boza
+ */
 import javax.swing.JOptionPane;
 
 public class GestionAdministrador {
-    // Atributos de la gestión del administrador
-    Admin[] administradores = new Admin[4]; // Array para almacenar administradores
-    int contador = 0; // Contador para el número de administradores
-    // Método para agregar un administrador
+    private Admin[] administradores = new Admin[10];
+    private int contador = 0;
 
-    public void agregarAdministrador(Admin admin) { // Método para agregar un administrador al arreglo
-        if (contador < administradores.length) {
-            administradores[contador] = admin;
-            contador++;
-        } else {
-            JOptionPane.showMessageDialog(null, "No se pueden agregar más administradores.", "Error",
-                    JOptionPane.ERROR_MESSAGE);
-        }
+    public GestionAdministrador() {
+        administradores[contador++] = new Admin(1, "Manuel", "admin123");
+        administradores[contador++] = new Admin(2, "Bartholomeo", "admin123");
     }
 
-    public GestionAdministrador() { // Constructor para inicializar algunos administradores
-        administradores[contador++] = new Admin(1, "Manuel","admin123");
-        administradores[contador++] = new Admin(2, "Barrtholomeo", "admin123");
-
+    public void menuAdministradores() {
+        String[] opciones = { "Mostrar Administradores", "Agregar Administrador", "Volver" };
+        int opcion;
+        do {
+            opcion = JOptionPane.showOptionDialog(null, "Gestión de Administradores",
+                    "Administradores", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                    null, opciones, opciones[0]);
+            switch (opcion) {
+                case 0 -> mostrarAdministradores();
+                case 1 -> agregarAdministrador();
+            }
+        } while (opcion != 2);
     }
 
-    public void mostarAdministradores() { // Método para mostrar la información de todos los administradores
-        String informacionAdministradores = "Administradores:\n";
-        informacionAdministradores += "ID\tNombre\t";
+    public void mostrarAdministradores() {
+        StringBuilder info = new StringBuilder("ID\tNombre\n");
         for (int i = 0; i < contador; i++) {
-            informacionAdministradores += administradores[i].getId() + "\t" +
-                    administradores[i].getNombre() + "\t" + "\n";
+            info.append(administradores[i].getId()).append("\t")
+                    .append(administradores[i].getNombre()).append("\n");
         }
-        JOptionPane.showMessageDialog(null, informacionAdministradores, "Lista de Administradores",
+        JOptionPane.showMessageDialog(null, info.toString(), "Lista de Administradores",
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
+    public void agregarAdministrador() {
+        int id = contador + 1;
+        String nombre = JOptionPane.showInputDialog("Nombre del Administrador:");
+        String contrasena = JOptionPane.showInputDialog("Contraseña:");
+        administradores[contador++] = new Admin(id, nombre, contrasena);
+        JOptionPane.showMessageDialog(null, "Administrador agregado correctamente.");
+    }
 }
