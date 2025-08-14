@@ -41,6 +41,7 @@ public class Matricula {
         this.idCurso = idCurso;
     }
     
+    
 
     
 
